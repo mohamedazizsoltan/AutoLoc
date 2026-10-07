@@ -23,4 +23,9 @@ public class Paiement {
 
     @Enumerated(EnumType.STRING)
     private ModePaiement modePaiement;
+
+    // Étape 18 : ManyToOne vers Contrat
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "contrat_id_contrat")
+    private Contrat contrat;
 }

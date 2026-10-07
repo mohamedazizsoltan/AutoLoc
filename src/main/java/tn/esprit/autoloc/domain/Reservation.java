@@ -22,4 +22,19 @@ public class Reservation {
 
     @Enumerated(EnumType.STRING)
     private StatutReservation statut;
+
+    // Étape 16 : ManyToOne vers Vehicule (LAZY, cascade delete via Vehicule)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vehicule_id_vehicule")
+    private Vehicule vehicule;
+
+    // Étape 16 : ManyToOne vers Client (EAGER, cascade delete via Client)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id_client")
+    private Client client;
+
+    // Étape 20 : OneToOne vers Contrat — clé FK dans la table reservation
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "contrat_id_contrat")
+    private Contrat contrat;
 }

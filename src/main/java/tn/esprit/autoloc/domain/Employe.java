@@ -20,4 +20,9 @@ public class Employe {
 
     @Enumerated(EnumType.STRING)
     private RoleEmploye role;
+
+    // Étape 16 : ManyToOne vers Agence (LAZY, pas de cascade)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "agence_id_agence")
+    private Agence agence;
 }
